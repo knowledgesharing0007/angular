@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <div class="row">
+     <div *ngIf="enableNgForSection" class="col-md-12">
+        <h1 appKnowledgeSharingHighlight class="text-center"> ngFor Structural Directive </h1>
+        <table class="table table-bordered">
+           <thead>
+              <tr>
+                 <td>Title</td>
+                 <td>Director</td>
+                 <td>Cast</td>
+              </tr>
+           </thead>
+           <tbody>
+              <tr *ngFor="let movie of movies">
+                 <td> {{ movie.title }}</td>
+                 <td> {{ movie.director }}</td>
+                 <td>{{movie.cast}}</td>
+              </tr>
+           </tbody>
+        </table>
+     </div>
+     <hr />
+     <div *ngIf="enableNgSwitchSection" class="col-md-12">
+        <h1 appKnowledgeSharingHighlight class="text-center">ngSwitch Structural Directive </h1>
+        <div class='card'>
+           <div class='card-header'>
+              ngSwitch Example
+           </div>
+           <div class="card-body">
+              Input string : <input type='text' [(ngModel)]="num" />
+              <div [ngSwitch]="num">
+                 <div *ngSwitchCase="'1'">One</div>
+                 <div *ngSwitchCase="'2'">Two</div>
+                 <div *ngSwitchCase="'3'">Three</div>
+                 <div *ngSwitchCase="'4'">Four</div>
+                 <div *ngSwitchCase="'5'">Five Number</div>
+                 <div *ngSwitchDefault>This is Default</div>
+              </div>
+           </div>
+        </div>
+     </div>
+     <hr />
+     <div *ngIf="enableNgIfSection" class="col-md-12">
+        <h1 appKnowledgeSharingHighlight>Simple example of ngIf </h1>
+        Show <input type="checkbox" [(ngModel)]="showMe" />
+        <p *ngIf="showMe">
+           ShowMe is checked
+        </p>
+        <p *ngIf="!showMe">
+           ShowMe is unchecked
+        </p>
+        <h1>ngIf Else</h1>
+        <p *ngIf="showMe; else elseBlock1">
+           ShowMe is checked
+        </p>
+        <ng-template #elseBlock1>
+           <p>ShowMe is unchecked Using elseBlock</p>
+        </ng-template>
+        <h1>ngIf then else</h1>
+        <p *ngIf="showMe; then thenBlock2 else elseBlock2">
+           This is not rendered
+        </p>
+        <ng-template #thenBlock2>
+           <p>ShowMe is checked Using thenblock</p>
+        </ng-template>
+        <ng-template #elseBlock2>
+           <p>ShowMe is unchecked Using elseBlock</p>
+        </ng-template>
+        <h1>using hidden </h1>
+        <p [hidden]="showMe">
+           content to render, when the condition is true  using hidden property binding
+        </p>
+        <p [hidden]="!showMe">
+           content to render, when the condition is false. using hidden property binding
+        </p>
+     </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<h1>{{pageTitle}}</h1>
+<hr />
+
+<p><strong>Interpolation in Angular</strong></p>
+<p>{{interpolation}}</p>
+<p>Date: {{getCurrentDatetime()}}</p>
+<hr />
+
+<p><strong>Property Binding in Angular</strong></p>
+<p [innerText]="propertyBinding"></p>
+<button [disabled]="isDisabled">I am disabled button example of property binding</button>
+<hr />
+
+
+
+<p><strong>Class binding with ClassName in Angular</strong></p>
+<div [className]="'green'">Class binding with ClassName example</div>
+<p>Class binding with Class</p>
+<div [class.red]="hasError()" [class.green]="!hasError()">Conditional Class binding with ClassName example</div>
+
+<p>Class binding with NgClass</p>
+<div [ngClass]="'red larger-font'"> Red Text with Larger Font Size </div>
+<p>NgClass with Array</p>
+<div [ngClass]="['red','larger-font']">Red Text with Larger Font Size with array classes </div>
+<p>NgClass with Object</p>
+<div [ngClass]="{'red':true,'larger-font':true}">Red Text with Larger Font Size with object</div>
+<hr />
+
+
+<p>Style binding in Angular</p>
+<p [style.background-color]="'grey'">some paragraph with grey background</p>
+<p>Style binding using ngStyles in Angular</p>
+<p [ngStyle]="{'color': 'purple',
+               'font-size': '20px',
+               'font-weight': 'bold'}">
+     Multiple styles
+</p>
+<hr />
+<p>Attribute Binding</p>
+<p [innerHTML]="attributeBinding"></p>
+<hr />
+
+<p>Event Binding</p>
+<button (click)="clickMe()">Click Me</button>
+<p>You have clicked {{clickCount}}</p>
+<hr />
+
+<p>ngModel & Two way Data binding in Angular</p>
+<h2>Model Binding Example</h2>
+<input type="text" name="value" [(ngModel)]="modelvalue">
+<p> You entered {{modelvalue}}</p>
+<button (click)="clearValue()">Clear</button>
+<hr />
+
+
+
+
