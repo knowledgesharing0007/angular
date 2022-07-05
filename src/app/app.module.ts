@@ -13,7 +13,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ErrorComponent } from './error/error.component';
- 
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,10 @@ import { ErrorComponent } from './error/error.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    
+     //  PrimeNG  Modules
+     TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
