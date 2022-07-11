@@ -1,0 +1,86 @@
+
+
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)">
+  <h1 class="text-center"> <strong> ANGULAR TEMPLATE DRIVEN FORM DEMO</strong></h1>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-1">
+          <label class="form-label" for="firstname">First Name</label>
+          <div class="input-group">
+            <input type="text" class="form-control" name="firstname" ngModel>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label class="form-label" for="lastname">Last Name</label>
+          <div class="input-group">
+            <input type="text"  class="form-control" name="lastname" ngModel>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label class="form-label" for="email">Email </label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="email" name="email" ngModel>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label class="form-label" for="gender">Geneder</label> 
+          <div class="input-group">
+            <input type="radio" value="male" name="gender" ngModel> Male
+            <input type="radio" value="female" name="gender" ngModel> Female
+          </div>
+        </div>
+        <div class="mb-1">
+          <label class="form-label" for="isMarried">Married</label> 
+          <div class="input-group">
+            <input type="checkbox" name="isMarried" ngModel>
+          </div>
+        </div>
+        <div class="mb-1">
+          <label class="form-label" for="country">Country</label>
+         
+          <div class="input-group">
+            <select name="country"  class="form-control" ngModel>
+              <option [ngValue]="c.id" *ngFor="let c of countryList">
+                {{c.name}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div ngModelGroup="address">
+          <div class="mb-1">
+            <label class="form-label" for="city">City</label> 
+            <div class="input-group">
+              <input type="text" class="form-control" name="city" ngModel>
+            </div>
+          </div>
+          <div class="mb-1">
+            <label class="form-label" for="street">Street</label> 
+            <div class="input-group">
+              <input type="text" class="form-control" name="street" ngModel>
+            </div>
+          </div>
+          <div class="mb-1">
+            <label class="form-label" for="pincode">Pin Code</label> 
+            <div class="input-group">
+              <input class="form-label" class="form-control" type="text" name="pincode" ngModel>
+            </div>
+          </div> 
+          <div class="mb-1">
+            <div class="input-group">
+              <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+          </div>
+         
+      </div>
+      </div>
+      <div class="col-md-6">
+        <pre>Value : {{contactForm.value | json }} </pre>
+        <pre>Valid : {{contactForm.valid}} </pre>
+        <pre>Touched : {{contactForm.touched  }} </pre>
+        <pre>Submitted : {{contactForm.submitted  }} </pre>
+      </div>  
+    </div> 
+  </div> 
+  </form>

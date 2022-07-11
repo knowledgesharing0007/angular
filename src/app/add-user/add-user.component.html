@@ -1,1 +1,101 @@
-<p>add-user works!</p>
+<h1 class="text-center"> <strong> ANGULAR MODEL DRIVEN FORMS (REACTIVE FORMS) DEMO</strong></h1>
+<br>
+<div class="container">
+  <form [formGroup]="userform" autocomplete="off">
+      <div class="mb-1">
+          <label for="name" class="form-label">Name</label>
+          <div class="input-group has-validation">
+              <input type="text" #name [ngClass]="{'form-control': true, 'is-invalid': userform.get('name')?.invalid && 
+              (userform.get('name')?.dirty || userform.get('name')?.touched)}" id="name" name="name"
+                  formControlName="name" placeholder="Name">
+              <div class="invalid-feedback">
+                  This field is required.
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+          <label for="mobile" class="form-label">Mobile</label>
+          <div class="input-group has-validation">
+              <input type="number" maxlength="10" [ngClass]="{'form-control': true, 'is-invalid': userform.get('mobile')?.invalid && 
+              (userform.get('mobile')?.dirty || userform.get('mobile')?.touched)}" id="mobile" name="mobile"
+                  formControlName="mobile" placeholder="Mobile">
+              <div class="invalid-feedback">
+                  This field is required.
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+          <label for="rating" class="form-label">Rating</label>
+          <div class="input-group has-validation">
+            <input type="number" maxlength="10" [ngClass]="{'form-control': true, 'is-invalid': userform.get('rating')?.invalid && 
+            (userform.get('rating')?.dirty || userform.get('rating')?.touched)}" id="rating" name="rating"
+                formControlName="rating" placeholder="rating"> 
+              <div class="invalid-feedback">
+                  This field is required.
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group has-validation">
+              <input type="email" [ngClass]="{'form-control': true, 'is-invalid': userform.get('email')?.invalid && 
+                  (userform.get('email')?.dirty || userform.get('email')?.touched)}" id="email" name="email"
+                  formControlName="email" placeholder="xyz@gmail.com">
+              <div class="invalid-feedback">
+                  {{userform.get('email')?.hasError('required') ? 'This field is required.':'Invalid Email'}}
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+          <label for="DOB" class="form-label">DOB</label>
+          <input type="date" [ngClass]="{'form-control': true, 'is-invalid': userform.get('dob')?.invalid && 
+                  (userform.get('dob')?.dirty || userform.get('dob')?.touched)}" id="dob" name="dob"
+                  formControlName="dob"> 
+      </div>
+      <div class="mb-1">
+          <label for="email" class="form-label">Gender {{userform.get('gender')?.value}} </label>
+          <div class="input-group has-validation">
+              <select [ngClass]="{'form-select': true, 'is-invalid': userform.get('gender')?.invalid && 
+                  (userform.get('gender')?.dirty || userform.get('gender')?.touched)}"
+                  aria-label="Default select example" formControlName="gender">
+                  <option value=""> --Select--</option>
+                  <option value="Male" selected="userform.get('gender')?.value=='Male'">Male</option>
+                  <option value="Female" selected="userform.get('gender')?.value=='Female'">Female</option>
+              </select>
+              <div class="invalid-feedback">
+                  This field is required.
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+          <label for="name" class="form-label">User Type</label>
+          <div class="input-group has-validation">
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="userType" type="radio" id="User" value="User">
+                  <label class="form-check-label" for="User">User</label>
+              </div>
+              <div class="form-check form-check-inline">
+                  <input class="form-check-input" formControlName="userType" type="radio" id="Admin" value="Admin">
+                  <label class="form-check-label" for="Admin">Admin</label>
+              </div>
+          </div>
+      </div>
+      <div class="mb-1">
+          <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" formControlName="isActive" id="isActive">
+              <label class="form-check-label" for="isActive">Is Active</label>
+          </div>
+      </div>
+      <div class="mb-1">
+          <div class="btn-group" role="group" aria-label="Basic example">
+              <button (click)="save()" [disabled]="userform.invalid" class="btn btn-primary" type="button">
+                  {{id==0 || id==null ?'Save':'Update'}}</button>
+              <button class="btn btn-secondary" type="button">Reset </button>
+          </div>
+      </div>
+
+      <div class="mb-1">
+          {{userform.value |json}}
+      </div>
+  </form>
+</div>
