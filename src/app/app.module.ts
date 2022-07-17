@@ -16,6 +16,13 @@ import { ErrorComponent } from './error/error.component';
 import { TableModule } from 'primeng/table';
 import { TemplatedrivenformComponent } from './templatedrivenform/templatedrivenform.component';
 import { ButtonModule } from 'primeng/button';
+import { HttpClientModule } from '@angular/common/http'; 
+import { CalendarModule } from 'primeng/calendar';
+import { SliderModule } from 'primeng/slider'; 
+import { DialogModule } from 'primeng/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
+
 
 @NgModule({
   declarations: [
@@ -34,11 +41,16 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    
+     // BrowserAnimations Modules 
+     BrowserAnimationsModule,
      //  PrimeNG  Modules
      TableModule,
     ButtonModule,
+    CalendarModule,
+    SliderModule,
+    DialogModule,
      //  Angular Form Modules
     FormsModule,
     ReactiveFormsModule

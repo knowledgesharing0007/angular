@@ -24,11 +24,20 @@
                         class="p-button-rounded"></a>
                     <a pButton pRipple type="button" (click)="remove(user.id)" style="margin-left: 5px;"
                         icon="pi pi-trash" class="p-button-rounded"></a>
+                        <a pButton pRipple type="button" (click)="showUserInfoDialog(user)" style="margin-left: 5px;"
+                        icon="pi pi-external-link" class="p-button-rounded"></a>
                 </td>
             </tr>
         </ng-template>
         <ng-template pTemplate="paginatorleft">
             <a [routerLink]="['/add-user']" class="btn btn-primary">Add New</a>
         </ng-template>
-    </p-table>
+    </p-table> 
+
+    <p-dialog header="User Info" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+        {{selectedUser |json}}
+        <ng-template pTemplate="footer">
+              <p-button icon="pi pi-times" (click)="displayBasic=false" label="Close"></p-button>
+        </ng-template>
+    </p-dialog>
 </div>

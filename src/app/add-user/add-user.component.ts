@@ -1,7 +1,9 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../service/user.service';
+import { User } from '../User';
 
 @Component({
   selector: 'app-add-user',
@@ -25,25 +27,25 @@ export class AddUserComponent implements OnInit {
       mobile: ['', []],
       email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
       gender: ['', [Validators.required]],
-      dob: [null, [Validators.required]],
+      dob: [new Date(), [Validators.required]],
       id: [0, [Validators.required]],
       isActive: [true],
       rating: [0, []],
       userType: ['', [Validators.required]],
     });
 
-  }
-
+  } 
   ngOnInit(): void {
     //**************Get User ID On Edit********************* */
     this.route.params.subscribe(params => {
       this.id = params['id'];
       if (params['id'] != null) {
         this.userform.get('Id')?.setValue(params['id']);
-        const data = this.userService.getUsersByID(this.id);
-        if (data) {
-          this.userform.setValue(data);
-        }
+       this.userService.getUsersByID(this.id).subscribe((data: User)=>{ 
+        debugger;
+          this.userform.setValue(data);   
+        });
+         
       }
     });
   }
@@ -54,14 +56,19 @@ export class AddUserComponent implements OnInit {
 
     if (this.userform.get('id')?.value === 0) {
       // on Create New User
-      this.userService.addUser(this.userform.value);
+      this.userService.addUser(this.userform.value).subscribe((data : User)=>{
+        //Redirecting to user List page after save or update 
+        this.router.navigate(['/user']);
+      });
     } else {
       // on Update User info
-      this.userService.updateUser(this.userform.value);
+      this.userService.updateUser(this.userform.value).subscribe((data : User)=>{
+        //Redirecting to user List page after save or update  
+        this.router.navigate(['/user']);
+      });
     }
 
-    //Redirecting to user List page after save or update 
-    this.router.navigate(['/user']);
+   
   }
 
 }

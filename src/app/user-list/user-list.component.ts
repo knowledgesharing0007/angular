@@ -8,14 +8,21 @@ import { User } from '../User';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-
+    displayBasic: boolean = false;
+    selectedUser:User | undefined;
+    showUserInfoDialog(user: User) {
+        this.selectedUser=user;
+        this.displayBasic = true;
+    }
   userList: User[] = [];
   first = 0;
   rows = 10;
   constructor(private userService: UserService) {}
   ngOnInit(): void {
+    
       // Get Users from UserService
-      this.userList = this.userService.getUsers();
+    //   this.userList = this.userService.getUsers();
+    this.refreshUser();
   }
   //****************PrimeNG DataTable Pagination method Start*********************** */
   //***************Reference: https://primefaces.org/primeng/showcase/#/table/page********** */
@@ -37,7 +44,13 @@ export class UserListComponent implements OnInit {
   //****************PrimeNG DataTable Pagination Method End*********************** */
   // ********************User To Remove User from User List*************************/
   remove(id: number) {
-      this.userService.removeUser(id);
-      this.userList = this.userService.getUsers();
+      this.userService.removeUser(id).subscribe(()=>{
+        this.refreshUser();
+      }); 
+  }
+  refreshUser(){
+    this.userService.getUsers().subscribe((data: User[])=>{
+        this.userList = data; 
+      });
   }
 }

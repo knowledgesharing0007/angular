@@ -4,7 +4,7 @@ export interface User {
     email: string,
     mobile: string,
     gender: string,
-    dob: Date,
+    dob: string,
     isActive: boolean,
     range?: any,
     userType?: string,
