@@ -1,6 +1,8 @@
 # Angular Interview Questions & Answers
 
 > Click :star:if you like the project and follow [@CoreKnowledgeSharing](https://www.youtube.com/@CoreKnowledgeSharing) for technical updates. 
+---
+> Watch the Angular Tutorial available on youtube :star:for better understanding [@Angular Tutorial For Beginners](https://www.youtube.com/watch?v=b9DyxghFCUw&list=PLiZiTEHYJaJve_iHbdeTKkMQ8xyyAO1-C)
 
 ---
 
